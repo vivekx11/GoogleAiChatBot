@@ -1,5 +1,5 @@
 /**
- * News Service — NewsAPI
+ * News Service — NewsAPI----
  */
 
 const axios = require('axios');
