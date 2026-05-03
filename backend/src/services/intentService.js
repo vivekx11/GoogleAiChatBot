@@ -6,7 +6,7 @@
  * voice commands to the right handler (weather, news, app control, etc.)
  */
 
-// ─── Intent patterns ──────────────────────────────────────────────────────
+// ─── Intent patterns ───────────────────────────────────────────────────
 const INTENT_PATTERNS = [
   // OPEN_APP
   {
