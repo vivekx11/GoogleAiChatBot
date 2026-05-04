@@ -6,6 +6,7 @@
  * GET  /api/chat/sessions/:id  — Get session with messages
  * POST /api/chat/sessions      — Create new session
  * DELETE /api/chat/sessions/:id
+ // chart 
  */
 
 const express = require('express');
