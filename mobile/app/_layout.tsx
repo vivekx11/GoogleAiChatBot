@@ -11,18 +11,14 @@ import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
-import { useAuthStore } from '../store/authStore';
 import { ModelServiceProvider } from '../services/modelService';
 
 // Keep splash screen visible while loading
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const { loadStoredAuth } = useAuthStore();
-
   useEffect(() => {
     async function init() {
-      await loadStoredAuth();
       await SplashScreen.hideAsync();
     }
     init();
