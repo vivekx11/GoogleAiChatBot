@@ -5,6 +5,7 @@
  * This router only handles:
  *   POST /api/voice/command  — Process transcript, return intent + action
  *   GET  /api/voice/history  — Voice command history
+ // voice
  */
 
 const express = require('express');
