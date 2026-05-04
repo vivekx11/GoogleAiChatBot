@@ -2,7 +2,7 @@
  * WebSocket Service
  * Real-time communication for voice streaming and live responses
  */
-//-------------------------------------------------------------
+//----------------------------------------------------------
 const WebSocket = require('ws');
 const jwt = require('jsonwebtoken');
 const logger = require('../utils/logger');
