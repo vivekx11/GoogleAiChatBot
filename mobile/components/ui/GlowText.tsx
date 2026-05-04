@@ -1,7 +1,7 @@
 /**
  * GlowText — Text with neon glow effect
  */
-
+//--------------------------------------
 import React from 'react';
 import { Text, TextStyle, StyleSheet } from 'react-native';
 import { Colors } from '../../constants/theme';
