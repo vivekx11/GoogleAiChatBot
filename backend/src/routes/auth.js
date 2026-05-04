@@ -3,7 +3,8 @@
  * POST /api/auth/register
  * POST /api/auth/login
  * GET  /api/auth/me
- * PUT  /api/auth/profile
+ * PUT  /api/auth/profile 
+ // basic auth 
  */
 
 const express = require('express');
