@@ -3,7 +3,7 @@
  * GET /api/integrations/weather?location=Mumbai
  * GET /api/integrations/news?category=technology
  */
-
+// integrations
 const express = require('express');
 const router = express.Router();
 const { authenticate } = require('../middleware/auth');
