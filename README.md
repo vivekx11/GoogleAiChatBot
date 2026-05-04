@@ -2,7 +2,7 @@
 -----------------------------------------------
 A production-ready mobile AI assistant built with React Native (Expo) + Node.js backend.
 **All AI runs on-device via RunAnywhere SDK — no OpenAI API key needed.**
-
+-----------------------------------------------
 ## Features
 - 🎙️ Voice Assistant — on-device STT (Whisper) + TTS (Piper)
 - 🧠 AI Chat — on-device LLM (LFM2 350M) with streaming + memory
