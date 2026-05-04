@@ -1,5 +1,5 @@
-# 🤖 Personal AI Operating System — Jarvis
-
+# 🤖 Personal AI Operating System 
+-----------------------------------------------
 A production-ready mobile AI assistant built with React Native (Expo) + Node.js backend.
 **All AI runs on-device via RunAnywhere SDK — no OpenAI API key needed.**
 
