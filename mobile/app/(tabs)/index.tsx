@@ -170,37 +170,38 @@ export default function VoiceScreen() {
 
         {/* Floating Mic Button */}
         <View style={styles.micContainer}>
+          {/* Glow uses JS driver (opacity only, no transform) */}
           <Animated.View
             style={[
               styles.micGlow,
               {
-                transform: [{ scale: pulseAnim }],
                 opacity: glowAnim,
                 shadowColor: micColor,
               },
             ]}
           />
-          <TouchableOpacity
-            style={[
-              styles.micButton,
-              isActive && styles.micButtonActive,
-              isProcessing && styles.micButtonProcessing,
-            ]}
-            onPress={handleMicPress}
-            onLongPress={handleMicLongPress}
-            disabled={isProcessing || isSpeaking}
-            activeOpacity={0.8}
-            accessibilityLabel={isActive ? 'Stop recording' : 'Start voice command'}
-            accessibilityRole="button"
-          >
-            <Animated.View style={{ transform: [{ scale: pulseAnim }] }}>
+          {/* Pulse uses native driver (transform only) */}
+          <Animated.View style={{ transform: [{ scale: pulseAnim }] }}>
+            <TouchableOpacity
+              style={[
+                styles.micButton,
+                isActive && styles.micButtonActive,
+                isProcessing && styles.micButtonProcessing,
+              ]}
+              onPress={handleMicPress}
+              onLongPress={handleMicLongPress}
+              disabled={isProcessing || isSpeaking}
+              activeOpacity={0.8}
+              accessibilityLabel={isActive ? 'Stop recording' : 'Start voice command'}
+              accessibilityRole="button"
+            >
               <Ionicons
                 name={isActive ? 'stop' : isProcessing ? 'hourglass' : 'mic'}
                 size={32}
                 color={Colors.textPrimary}
               />
-            </Animated.View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </Animated.View>
           <Text style={styles.micHint}>
             {isActive ? 'Long press to cancel' : 'Hold to cancel'}
           </Text>
