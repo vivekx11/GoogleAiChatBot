@@ -20,15 +20,6 @@
     "paths": {
       "@/*": [
         "./*"
-      ],
-      "@runanywhere/core": [
-        "./types/runanywhere.d.ts"
-      ],
-      "@runanywhere/llamacpp": [
-        "./types/runanywhere.d.ts"
-      ],
-      "@runanywhere/onnx": [
-        "./types/runanywhere.d.ts"
       ]
     }
   },
