@@ -1,6 +1,6 @@
 /**
  * Mock for @runanywhere/core
- * Used during development when the native SDK is not available.
+ * All operations succeed silently — no real AI runs in this build.
  */
 
 const SDKEnvironment = {
@@ -37,33 +37,59 @@ const AudioModule = {
 
 const RunAnywhere = {
   initialize: async (_opts) => {},
-  getModelInfo: async (_id) => null,
-  downloadModel: async (_id, _onProgress) => {},
+
+  // Return a fake "downloaded" model so loadLLM/loadSTT/loadTTS never throw
+  getModelInfo: async (modelId) => ({
+    id: modelId,
+    name: modelId,
+    localPath: `/mock/models/${modelId}`,
+    isDownloaded: true,
+  }),
+
+  downloadModel: async (_id, onProgress) => {
+    // Simulate instant 100% download
+    if (onProgress) onProgress({ progress: 1, state: 'completed' });
+  },
+
   loadModel: async (_path) => {},
   loadSTTModel: async (_path, _engine) => {},
   loadTTSModel: async (_path, _engine) => {},
   unloadModel: async () => {},
   unloadSTTModel: async () => {},
   unloadTTSModel: async () => {},
-  isSTTModelLoaded: async () => false,
-  generate: async (_prompt, _opts) => ({ text: '', latencyMs: 0 }),
-  generateStream: async (_prompt, _opts) => ({
-    stream: (async function* () {})(),
-    result: Promise.resolve({ tokensPerSecond: 0 }),
-    cancel: () => {},
-  }),
-  chat: async (_prompt) => 'RunAnywhere SDK not available in this build.',
+  isSTTModelLoaded: async () => true,
+
+  generate: async (_prompt, _opts) => ({ text: 'Mock response', latencyMs: 0 }),
+
+  generateStream: async (_prompt, _opts) => {
+    const mockTokens = ['Hello', '! ', 'I', ' am', ' Jarvis', '.', ' How', ' can', ' I', ' help', '?'];
+    return {
+      stream: (async function* () {
+        for (const token of mockTokens) {
+          yield token;
+        }
+      })(),
+      result: Promise.resolve({ tokensPerSecond: 0 }),
+      cancel: () => {},
+    };
+  },
+
+  chat: async (_prompt) => 'Hello! I am Jarvis. The AI backend is not connected yet.',
+
   transcribe: async (_audio, _opts) => ({ text: '', confidence: 0, duration: 0 }),
   transcribeBuffer: async (_samples, _opts) => ({ text: '', confidence: 0, duration: 0 }),
   transcribeFile: async (_path, _opts) => ({ text: '', confidence: 0, duration: 0 }),
+
   synthesize: async (_text, _opts) => ({ audio: '', sampleRate: 22050, numSamples: 0, duration: 0 }),
   speak: async (_text, _opts) => {},
   stopSpeaking: async () => {},
   isSpeaking: async () => false,
+
   startVoiceSession: async (_config, _cb) => ({
     stop: () => {},
     events: async function* () {},
   }),
+
   Audio: AudioModule,
 };
 
