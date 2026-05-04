@@ -2,7 +2,7 @@
  * Commands Routes
  * POST /api/commands/process — Process any text command (voice or typed)
  */
-
+// comm
 const express = require('express');
 const router = express.Router();
 const { authenticate } = require('../middleware/auth');
