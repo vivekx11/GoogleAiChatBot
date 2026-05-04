@@ -4,6 +4,7 @@
  * Shows a download prompt when RunAnywhere models aren't loaded yet.
  * Displayed inline at the top of Voice and Chat screens.
  */
+//-----------------------------------------------------------
 
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
