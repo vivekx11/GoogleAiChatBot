@@ -6,6 +6,7 @@
  * DELETE /api/automation/:id      — Delete automation
  * POST   /api/automation/:id/run  — Manually trigger
  * POST   /api/automation/:id/toggle — Enable/disable
+ // automation
  */
 
 const express = require('express');
